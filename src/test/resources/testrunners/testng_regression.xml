@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Open Cart Test Suite" verbose="4" thread-count="4" parallel="tests">
+<suite name="Open Cart Test Suite" verbose="4" thread-count="4"
+	parallel="tests">
 
 	<listeners>
-		<listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
-		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
+		<listener
+			class-name="com.qa.opencart.listeners.ExtentReportListener" />
+		<listener
+			class-name="com.qa.opencart.listeners.TestAllureListener" />
 
-		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+		<listener
+			class-name="com.qa.opencart.listeners.AnnotationTransformer" />
 
 	</listeners>
 
-	<test name="Open Cart Login Page Test">
+	<test name="Open Cart Login Page Test _ chrome">
+
+		<parameter name="browser" value="chrome" />
+
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+	
+	<test name="Open Cart Login Page Test _ firefox">
+
+		<parameter name="browser" value="firefox" />
+
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
 
-	<!-- <test name="Open Cart Login Page Negative Test">
+	<test name="Open Cart Login Page Negative Test _ firefox">
+		<parameter name="browser" value="firefox" />
+
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageNegativeTest" />
 		</classes>
-	</test>  -->
+	</test>
+	
+	<test name="Open Cart Login Page Negative Test _ chrome">
+		<parameter name="browser" value="firefox" />
 
-	 <test name="Open Cart Accounts Page Test">
 		<classes>
-			<class name="com.qa.opencart.tests.AccountsPageTest" />
+			<class name="com.qa.opencart.tests.LoginPageNegativeTest" />
 		</classes>
 	</test>
 
-	<!--  <test name="Open Cart Product Info Page Test"> <classes> <class name="com.qa.opencart.tests.ProductInfoPageTest" 
+	<!-- <test name="Open Cart Accounts Page Test"> <classes> <class name="com.qa.opencart.tests.AccountsPageTest" 
+		/> </classes> </test> -->
+
+	<!-- <test name="Open Cart Product Info Page Test"> <classes> <class name="com.qa.opencart.tests.ProductInfoPageTest" 
 		/> </classes> </test> <test name="Open Cart Registration Page Test"> <classes> 
 		<class name="com.qa.opencart.tests.RegistrationPageTest" /> </classes> </test> -->
 
